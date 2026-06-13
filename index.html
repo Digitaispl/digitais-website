@@ -1,18 +1,436 @@
 <!DOCTYPE html>
+
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DigitAIS</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DigitAIS | AI, Automatyzacja i Compliance</title>
+  <meta name="description" content="DigitAIS pomaga firmom wdrażać AI, automatyzacje, agentów AI oraz rozwiązania zgodne z AI Act, RODO i zasadami compliance." />
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-soft: #0b1024;
+      --card: #111936;
+      --text: #ffffff;
+      --muted: #b8c2d8;
+      --blue: #38bdf8;
+      --violet: #8b5cf6;
+      --green: #22c55e;
+      --border: rgba(255,255,255,0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background: radial-gradient(circle at top right, rgba(56,189,248,0.2), transparent 35%),
+                  radial-gradient(circle at top left, rgba(139,92,246,0.2), transparent 35%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+      background: rgba(5,8,22,0.78);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      max-width: 1180px;
+      margin: auto;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .logo span {
+      color: var(--blue);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 24px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--blue), var(--violet));
+      color: #fff;
+      font-weight: 700;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+    }
+
+    section {
+      padding: 90px 24px;
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: auto;
+    }
+
+    .hero {
+      min-height: 86vh;
+      display: grid;
+      align-items: center;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(44px, 7vw, 82px);
+      line-height: 0.98;
+      letter-spacing: -0.07em;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+      margin-bottom: 18px;
+    }
+
+    .lead {
+      font-size: 21px;
+      color: var(--muted);
+      max-width: 680px;
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .visual {
+      min-height: 460px;
+      border: 1px solid var(--border);
+      border-radius: 36px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .orb {
+      width: 230px;
+      height: 230px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--blue), var(--violet));
+      filter: blur(4px);
+      opacity: 0.95;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .visual-card {
+      position: absolute;
+      padding: 18px 20px;
+      background: rgba(17,25,54,0.82);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      backdrop-filter: blur(20px);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .visual-card strong {
+      display: block;
+      color: #fff;
+      font-size: 18px;
+    }
+
+    .vc1 { top: 60px; left: 36px; }
+    .vc2 { bottom: 70px; right: 36px; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-22px); }
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 42px;
+    }
+
+    .card {
+      background: rgba(17,25,54,0.72);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 30px;
+    }
+
+    .card h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: var(--green);
+      font-weight: 800;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .list {
+      display: grid;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .list div {
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+    }
+
+    .list strong {
+      color: #fff;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 90px 30px;
+      border: 1px solid var(--border);
+      border-radius: 36px;
+      background: linear-gradient(135deg, rgba(56,189,248,0.13), rgba(139,92,246,0.13));
+    }
+
+    footer {
+      padding: 40px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 860px) {
+      .hero,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      section {
+        padding: 64px 20px;
+      }
+
+      .visual {
+        min-height: 360px;
+      }
+    }
+  </style>
+
 </head>
 
 <body>
 
-<h1>DigitAIS</h1>
+<header>
+  <nav class="nav">
+    <div class="logo">Digit<span>AIS</span></div>
+    <div class="nav-links">
+      <a href="#uslugi">Usługi</a>
+      <a href="#compliance">Compliance</a>
+      <a href="#proces">Proces</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+  </nav>
+</header>
 
-<p>
-Pierwsza strona działa poprawnie.
-</p>
+<main>
+
+  <section class="container hero">
+    <div>
+      <span class="eyebrow">AI • Automatyzacja • Compliance</span>
+      <h1>Nowoczesne AI dla firm, które chcą działać szybciej i mądrzej.</h1>
+      <p class="lead">
+        Pomagamy firmom wdrażać rozwiązania AI, automatyzacje procesów, agentów AI oraz praktyczne zasady zgodne z AI Act, RODO i wymaganiami compliance.
+      </p>
+      <div class="hero-actions">
+        <a class="btn" href="mailto:info@digitais.pl">Umów konsultację</a>
+        <a class="btn secondary" href="#uslugi">Zobacz usługi</a>
+      </div>
+    </div>
+
+```
+<div class="visual">
+  <div class="orb"></div>
+  <div class="visual-card vc1">
+    <strong>AI Governance</strong>
+    polityki, zasady, ryzyka
+  </div>
+  <div class="visual-card vc2">
+    <strong>Automation</strong>
+    n8n, workflow, agenci AI
+  </div>
+</div>
+```
+
+  </section>
+
+  <section id="uslugi">
+    <div class="container">
+      <span class="tag">Co robimy</span>
+      <h2>Łączymy AI, automatyzację i compliance w jeden praktyczny system.</h2>
+      <p class="lead">
+        DigitAIS wspiera firmy, które chcą korzystać z AI odpowiedzialnie, bez chaosu i bez ryzyka organizacyjnego.
+      </p>
+
+```
+  <div class="grid">
+    <div class="card">
+      <h3>AI Strategy</h3>
+      <p>Pomagamy zdefiniować, gdzie AI realnie przyniesie wartość biznesową i jak wdrożyć ją krok po kroku.</p>
+    </div>
+    <div class="card">
+      <h3>AI Automation</h3>
+      <p>Projektujemy automatyzacje procesów z użyciem n8n, narzędzi no-code, API i agentów AI.</p>
+    </div>
+    <div class="card">
+      <h3>AI Compliance</h3>
+      <p>Tworzymy zasady używania AI w organizacji, polityki promptowania, rejestry ryzyk i praktyczne procedury.</p>
+    </div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <section id="compliance">
+    <div class="container split">
+      <div>
+        <span class="tag">AI Act & RODO</span>
+        <h2>AI bezpieczne dla biznesu, ludzi i danych.</h2>
+        <p class="lead">
+          Wdrożenie AI to nie tylko technologia. To również odpowiedzialność, dane osobowe, bezpieczeństwo informacji, transparentność i kontrola ryzyk.
+        </p>
+      </div>
+
+```
+  <div class="list">
+    <div><strong>Polityka korzystania z AI</strong><br>Jasne zasady dla pracowników i zespołów.</div>
+    <div><strong>Ocena ryzyk AI</strong><br>Identyfikacja ryzyk prawnych, operacyjnych i reputacyjnych.</div>
+    <div><strong>Prompting Guidelines</strong><br>Bezpieczne i efektywne korzystanie z narzędzi generatywnych.</div>
+    <div><strong>Rejestr narzędzi AI</strong><br>Porządek w wykorzystywanych systemach i dostawcach.</div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <section id="proces">
+    <div class="container">
+      <span class="tag">Jak pracujemy</span>
+      <h2>Od diagnozy do wdrożenia.</h2>
+
+```
+  <div class="grid">
+    <div class="card">
+      <h3>01. Audyt</h3>
+      <p>Analizujemy procesy, dane, narzędzia i ryzyka związane z użyciem AI w organizacji.</p>
+    </div>
+    <div class="card">
+      <h3>02. Projekt</h3>
+      <p>Tworzymy architekturę rozwiązania, dokumentację, workflow i rekomendacje wdrożeniowe.</p>
+    </div>
+    <div class="card">
+      <h3>03. Wdrożenie</h3>
+      <p>Pomagamy uruchomić automatyzacje, przeszkolić zespół i przygotować firmę do skalowania AI.</p>
+    </div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <section id="kontakt">
+    <div class="container">
+      <div class="cta">
+        <span class="tag">Porozmawiajmy</span>
+        <h2>Chcesz wdrożyć AI w firmie, ale nie wiesz od czego zacząć?</h2>
+        <p class="lead" style="margin-left:auto;margin-right:auto;">
+          Napisz do nas. Pomożemy określić pierwszy bezpieczny i opłacalny krok.
+        </p>
+        <a class="btn" href="mailto:info@digitais.pl">info@digitais.pl</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 DigitAIS. AI Automation • Compliance • Digital Transformation.</p>
+</footer>
 
 </body>
 </html>
