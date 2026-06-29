@@ -812,6 +812,106 @@
       }
     }
 
+  
+
+    /* =========================================================
+       TABLE MOBILE SCROLL FIX — only table content scrolls
+       Fix: wide pricing tables must NOT expand the whole page.
+       ========================================================= */
+    html,
+    body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    main,
+    section,
+    .sections,
+    .container,
+    .article,
+    .article-body {
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    .table-wrap {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-x: contain;
+      position: relative;
+    }
+
+    .table-wrap table {
+      width: max-content;
+      min-width: 680px;
+      max-width: none;
+      table-layout: auto;
+    }
+
+    @media (max-width: 768px) {
+      html,
+      body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden !important;
+      }
+
+      main,
+      section,
+      .sections,
+      .container,
+      .article,
+      .article-body,
+      .card,
+      .info-box,
+      .highlight,
+      .warning,
+      .cta-band {
+        max-width: 100% !important;
+        min-width: 0 !important;
+      }
+
+      .table-wrap {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+        touch-action: pan-x;
+      }
+
+      .table-wrap table {
+        display: table !important;
+        width: max-content !important;
+        min-width: 620px !important;
+        max-width: none !important;
+      }
+
+      .table-wrap th,
+      .table-wrap td {
+        white-space: normal;
+      }
+
+      .table-wrap .price,
+      .table-wrap th {
+        white-space: nowrap;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .table-wrap table {
+        min-width: 560px !important;
+      }
+    }
+
   </style>
 </head>
 
