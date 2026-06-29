@@ -538,6 +538,280 @@
         border-radius: 22px;
       }
     }
+
+    /* =========================================================
+       MOBILE PRODUCTION FIX — DigitAIS / GitHub Pages
+       Zakres: tylko urządzenia mobilne i małe tablety.
+       Desktop pozostaje bez zmian.
+       ========================================================= */
+    @media (max-width: 768px) {
+      html,
+      body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      body {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      img,
+      svg,
+      video,
+      canvas,
+      iframe {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .container {
+        width: min(100% - 24px, var(--max));
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .nav {
+        min-height: auto;
+        padding: 12px 0;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 12px;
+      }
+
+      .brand {
+        width: 100%;
+        font-size: 22px;
+        line-height: 1.1;
+        gap: 10px;
+      }
+
+      .logo {
+        width: 36px;
+        height: 36px;
+      }
+
+      .menu {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .menu a {
+        font-size: 13px;
+        padding: 8px 10px;
+        white-space: nowrap;
+      }
+
+      .hero {
+        padding: 56px 0 44px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      h1 {
+        font-size: clamp(36px, 10vw, 48px);
+      }
+
+      .lead {
+        font-size: 17px;
+        margin-top: 18px;
+      }
+
+      .hero-actions {
+        width: 100%;
+        gap: 10px;
+        margin-top: 26px;
+      }
+
+      .hero-actions .btn,
+      .cta-band .btn,
+      .btn {
+        width: 100%;
+        min-height: 50px;
+        text-align: center;
+      }
+
+      .hero-card {
+        padding: 22px;
+        border-radius: 18px;
+      }
+
+      .metric-row {
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .sections {
+        padding: 52px 0;
+      }
+
+      .section-head {
+        margin-bottom: 28px;
+      }
+
+      .section-head h2 {
+        font-size: clamp(30px, 8vw, 40px);
+      }
+
+      .section-head p {
+        font-size: 16px;
+      }
+
+      .cards,
+      .info-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .card,
+      .info-box {
+        padding: 20px;
+        border-radius: 18px;
+      }
+
+      .article {
+        border-radius: 20px;
+        overflow: hidden;
+      }
+
+      .article-header {
+        padding: 30px 20px;
+      }
+
+      .article-header h2 {
+        font-size: clamp(30px, 8vw, 40px);
+      }
+
+      .article-header p {
+        font-size: 16px;
+      }
+
+      .article-body {
+        padding: 26px 18px 32px;
+      }
+
+      .article-body h3 {
+        font-size: 25px;
+        margin: 30px 0 14px;
+      }
+
+      .article-body h4 {
+        font-size: 19px;
+      }
+
+      .article-body p,
+      .article-body li {
+        font-size: 15.5px;
+      }
+
+      .article-body ul {
+        margin-left: 18px;
+      }
+
+      .tech {
+        gap: 8px;
+      }
+
+      .tag {
+        font-size: 13px;
+        padding: 7px 10px;
+      }
+
+      .highlight,
+      .warning {
+        padding: 16px;
+        border-radius: 16px;
+      }
+
+      .table-wrap {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 16px;
+      }
+
+      table {
+        min-width: 620px;
+      }
+
+      th,
+      td {
+        padding: 12px 13px;
+        font-size: 14px;
+      }
+
+      .cta-band {
+        padding: 24px 20px;
+        border-radius: 20px;
+        flex-direction: column;
+        align-items: stretch;
+        text-align: left;
+      }
+
+      .cta-band h3 {
+        font-size: 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: calc(100% - 20px);
+      }
+
+      .brand {
+        font-size: 20px;
+      }
+
+      .logo {
+        width: 32px;
+        height: 32px;
+      }
+
+      .menu {
+        gap: 6px;
+      }
+
+      .menu a {
+        font-size: 12.5px;
+        padding: 7px 9px;
+      }
+
+      .hero {
+        padding-top: 44px;
+      }
+
+      .hero-card,
+      .card,
+      .info-box {
+        padding: 18px;
+      }
+
+      .article-body {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      table {
+        min-width: 560px;
+      }
+    }
+
   </style>
 </head>
 
