@@ -913,22 +913,18 @@
     }
 
   
+
 /* =========================================================
-   FINAL MOBILE TABLE FIX
-   Tabela "Składnik" przewija się wyłącznie wewnątrz kontenera,
-   bez przesuwania całej strony w lewo/prawo.
+   FINAL FIX — MOBILE TABLE INTERNAL SCROLLBAR
+   Problem: tabela "Składnik" przesuwała całą stronę.
+   Cel: przewija się wyłącznie zawartość tabeli w poziomie.
    ========================================================= */
+
 html,
 body {
+  width: 100%;
   max-width: 100%;
-  overflow-x: clip;
-}
-
-@supports not (overflow-x: clip) {
-  html,
-  body {
-    overflow-x: hidden;
-  }
+  overflow-x: hidden !important;
 }
 
 main,
@@ -937,47 +933,94 @@ main,
 .article,
 .article-body {
   max-width: 100%;
+  min-width: 0;
 }
 
 .table-wrap {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow-x: scroll !important;
+  overflow-y: hidden !important;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
-  display: block;
-  position: relative;
+  display: block !important;
   box-sizing: border-box;
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+}
+
+/* Widoczny suwak poziomy w Chrome / Edge / Safari */
+.table-wrap::-webkit-scrollbar {
+  height: 10px;
+}
+
+.table-wrap::-webkit-scrollbar-track {
+  background: #e2e8f0;
+  border-radius: 999px;
+}
+
+.table-wrap::-webkit-scrollbar-thumb {
+  background: #2563eb;
+  border-radius: 999px;
+}
+
+/* Widoczny suwak poziomy w Firefox */
+.table-wrap {
+  scrollbar-width: thin;
+  scrollbar-color: #2563eb #e2e8f0;
 }
 
 .table-wrap table {
-  width: max-content;
-  min-width: 680px;
-  max-width: none;
-  table-layout: auto;
+  width: 760px !important;
+  min-width: 760px !important;
+  max-width: none !important;
+  table-layout: auto !important;
+  border-collapse: collapse;
 }
 
+/* Desktop bez zmian — tabela może normalnie zajmować szerokość kontenera */
+@media (min-width: 769px) {
+  .table-wrap table {
+    width: 100% !important;
+    min-width: 680px !important;
+  }
+}
+
+/* Mobile: tabela szersza niż ekran, ale przewijana tylko wewnątrz .table-wrap */
 @media (max-width: 768px) {
   .article-body {
-    overflow-x: hidden;
+    overflow-x: hidden !important;
   }
 
   .table-wrap {
-    margin-left: 0;
-    margin-right: 0;
-    padding-bottom: 4px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-bottom: 8px;
     touch-action: pan-x;
   }
 
   .table-wrap table {
-    min-width: 640px;
+    width: 760px !important;
+    min-width: 760px !important;
+  }
+
+  th,
+  td {
+    white-space: normal;
+  }
+
+  .price {
+    white-space: nowrap;
   }
 }
 
 @media (max-width: 480px) {
   .table-wrap table {
-    min-width: 600px;
+    width: 720px !important;
+    min-width: 720px !important;
   }
 }
 
